@@ -119,7 +119,6 @@
 
   /* ---------- hero 3D scene ---------- */
   .scene{position:relative;height:520px;transform-style:preserve-3d}
-  @media(max-width:900px){.scene{height:420px;margin-top:20px}}
   .card3d{
     position:absolute;border-radius:var(--radius);
     background:#fff;box-shadow:var(--shadow-pop);
@@ -180,8 +179,18 @@
     0%,100%{transform:translateY(0) rotateZ(0deg)}
     50%{transform:translateY(-16px) rotateZ(1.5deg)}
   }
+  @keyframes float-soft{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-5px)}
+  }
+  /* mobile: chips leave the card and form a 2x2 grid below it */
   @media(max-width:900px){
-    .chip-1{left:0}.chip-3{right:0}.chip-4{right:0}
+    .scene{height:auto;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .card-main{position:relative;inset:auto;grid-column:1/-1;min-height:340px;gap:22px}
+    .chip{position:static;animation:float-soft 5s ease-in-out infinite;padding:14px 16px}
+    .chip-2{animation-delay:1.2s}
+    .chip-3{animation-delay:2.4s}
+    .chip-4{animation-delay:.6s}
   }
 
   /* ---------- marquee ---------- */
